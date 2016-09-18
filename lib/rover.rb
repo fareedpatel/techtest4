@@ -12,12 +12,22 @@ class Rover
       }
   end
 
-  def do(move)
-    case move
+  def take_action(action)
+    case action
       when 'R' then turn_right
       when 'L' then turn_left
       when 'M' then go_forward
     end
+  end
+
+  def move
+    while (action = @coordinates.shift)
+      take_action(action)
+    end
+  end
+
+  def to_string
+    "#{@current_position[:x]} #{@current_position[:y]} #{@current_position[:face]}"
   end
 
 private
@@ -54,8 +64,10 @@ private
     new_x = @current_position[:x] + x
     new_y = @current_position[:y] + y
 
-    current_position[:x] = new_x
-    current_position[:y] = new_y
+    if @mars_grid.within_bounds?(new_x, new_y)
+      current_position[:x] = new_x
+      current_position[:y] = new_y
+    end
   end
 
 
