@@ -17,5 +17,11 @@ describe Rover do
     expect(@rover.current_position[:face]).to eq('W')
   end
 
+  it 'moves forward one when given instruction M' do
+    @rover.do 'M'
+    expect(@rover.current_position[:x]).to eq(1)
+    expect(@rover.current_position[:y]).to eq(3)
+  end
+
 
 end
