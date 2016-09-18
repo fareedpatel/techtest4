@@ -32,4 +32,14 @@ def turn_right
   end
 end
 
+def turn_left
+  @current_position[:face] = 
+  case @current_position[:face]
+    when 'N' then 'W'
+    when 'E' then 'N'
+    when 'S' then 'E'
+    when 'W' then 'S'
+  end
+end
+
 end
