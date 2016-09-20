@@ -1,6 +1,7 @@
-require 'mars_grid'
+
+require 'models/direction'
 class Rover
-  attr_reader :current_position
+  attr_reader :mars_grid, :current_position
 
   def initialize(input, mars_grid)
     @mars_grid = mars_grid
@@ -33,13 +34,13 @@ class Rover
 private
 
   def turn_right
-    @current_position[:face] = 
-    case @current_position[:face]
-      when 'N' then 'E'
-      when 'E' then 'S'
-      when 'S' then 'W'
-      when 'W' then 'N'
-    end
+    @current_position[:face] = current_position.turn_right 
+    # case @current_position[:face]
+    #   when 'N' then 'E'
+    #   when 'E' then 'S'
+    #   when 'S' then 'W'
+    #   when 'W' then 'N'
+    # end
   end
 
   def turn_left
@@ -69,7 +70,4 @@ private
       current_position[:y] = new_y
     end
   end
-
-
-
 end

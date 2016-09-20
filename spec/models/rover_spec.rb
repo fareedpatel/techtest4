@@ -1,10 +1,11 @@
-require 'rover'
-require 'mars_grid'
+require 'spec_helper.rb'
+require 'models/rover'
+require 'models/mars_grid'
 describe Rover do
   let (:input) { ['1', '2', 'N', 'LMLMLMLMM'] }
 
   before :each do
-    @mars_grid = MarsGrid.new "5 5\n1 2 N\nLMLMLMLMM 3 3 E MMRMMRMRRM"
+    @mars_grid = MarsGrid.new "5 5\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM"
     @rover = Rover.new input, @mars_grid
   end
 
@@ -41,7 +42,7 @@ describe Rover do
 
   it 'converts it to a string' do
     @rover.move
-    expect(@rover.to_string).to eq ('1 3 N')
+    expect(@rover.to_string).to eq ("1 3 N")
   end
 
   it 'does not allow the rover get out of the mars grid' do
